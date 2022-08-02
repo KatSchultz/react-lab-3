@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Cake from "./components/Cake";
+import CakeBuilder from "./components/CakeBuilder";
+
+export interface Layer {
+  height: number;
+  width: number;
+  color: string;
+}
 
 function App() {
+  const [layers, setLayers] = useState([
+    { height: 2, width: 5, color: "pink" },
+    { height: 1, width: 4, color: "pink" },
+    { height: 0.5, width: 3, color: "pink" },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cake layers={layers} />
+      <CakeBuilder />
     </div>
   );
 }
