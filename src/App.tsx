@@ -12,9 +12,9 @@ export interface Layer {
 
 function App() {
   const [layers, setLayers] = useState([
-    { height: 2, width: 5, color: "pink" },
-    { height: 1, width: 4, color: "pink" },
-    { height: 0.5, width: 3, color: "pink" },
+    { height: 0.5, width: 3, color: "skyblue" },
+    { height: 1, width: 4, color: "skyblue" },
+    { height: 2, width: 5, color: "skyblue" },
   ]);
   return (
     <div className="App">

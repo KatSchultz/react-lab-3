@@ -1,7 +1,26 @@
 import React from "react";
+import "./CakeLayer.css";
+import { Layer } from "../App";
 
-export default function CakeLayer() {
-  const styles = {};
+interface CakeLayerProps {
+  layer: Layer;
+}
 
-  return <div>CakeLayer</div>;
+export default function CakeLayer({ layer }: CakeLayerProps) {
+  const widthCalc = layer.width * 10;
+  const heightCalc = layer.height * 10;
+
+  const styles = {
+    width: widthCalc + "rem",
+    height: heightCalc + "rem",
+    backgroundColor: layer.color,
+  };
+
+  return (
+    <div className="layer-holder">
+      <div className="cake-layer" style={styles}>
+        I'm a layer
+      </div>
+    </div>
+  );
 }

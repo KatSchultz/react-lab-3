@@ -8,7 +8,9 @@ interface CakeProps {
 export default function Cake({ layers }: CakeProps) {
   return (
     <div>
-      <CakeLayer />
+      {layers.map((layer) => (
+        <CakeLayer layer={layer} />
+      ))}
     </div>
   );
 }
