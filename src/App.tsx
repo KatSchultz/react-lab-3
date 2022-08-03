@@ -16,10 +16,11 @@ function App() {
     { height: 1, width: 4, color: "skyblue" },
     { height: 2, width: 5, color: "skyblue" },
   ]);
+
   return (
     <div className="App">
-      <Cake layers={layers} />
       <CakeBuilder />
+      <Cake layers={layers} />
     </div>
   );
 }

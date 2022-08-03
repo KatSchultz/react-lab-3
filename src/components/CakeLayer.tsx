@@ -7,8 +7,8 @@ interface CakeLayerProps {
 }
 
 export default function CakeLayer({ layer }: CakeLayerProps) {
-  const widthCalc = layer.width * 10;
-  const heightCalc = layer.height * 10;
+  const widthCalc = layer.width * 7;
+  const heightCalc = layer.height * 7;
 
   const styles = {
     width: widthCalc + "rem",
