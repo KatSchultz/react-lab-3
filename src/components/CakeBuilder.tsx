@@ -2,11 +2,18 @@ import { useState } from "react";
 import LayerAdd from "./LayerAdd";
 import LayerBuilder from "./LayerBuilder";
 import LayerForm from "./LayerForm";
+import { Layer } from "../App";
 
-export default function CakeBuilder() {
+interface Props {
+  addLayer: (layer: Layer) => void;
+}
+
+export default function CakeBuilder({ addLayer }: Props) {
   const [formDisplay, setFormDisplay] = useState(true);
+  console.log("Form display state: ", formDisplay);
 
   function displayForm() {
+    console.log("display form clicked");
     setFormDisplay(true);
   }
 
@@ -18,7 +25,7 @@ export default function CakeBuilder() {
     <div>
       <LayerAdd displayForm={displayForm} />
       <LayerBuilder />
-      {formDisplay && <LayerForm hideForm={hideForm} />}
+      {formDisplay && <LayerForm hideForm={hideForm} addLayer={addLayer} />}
     </div>
   );
 }
