@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Layer } from "../App";
 import "./LayerForm.css";
 interface LayerFormProps {
@@ -7,17 +8,23 @@ interface LayerFormProps {
 }
 
 export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
+  const [layerId, setLayerId] = useState(3);
   const [newLayer, setNewLayer] = useState<Layer>({
     height: 0,
     width: 0,
     color: "#ffffff",
-    index: 3,
+    id: uuidv4(),
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewLayer({ ...newLayer, ...{ [e.target.name]: e.target.value } });
-    console.log("changed ", e.target.value);
-    console.log(newLayer);
+    if (e.target.name === "width" || e.target.name === "height") {
+      setNewLayer({
+        ...newLayer,
+        ...{ [e.target.name]: Number(e.target.value) },
+      });
+    } else {
+      setNewLayer({ ...newLayer, ...{ [e.target.name]: e.target.value } });
+    }
   };
 
   const submitHandler = (e: FormEvent) => {

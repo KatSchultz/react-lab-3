@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Cake from "./components/Cake";
 import CakeBuilder from "./components/CakeBuilder";
@@ -8,23 +7,35 @@ export interface Layer {
   height: number;
   width: number;
   color: string;
-  index: number;
+  id: string;
 }
 
 function App() {
   const [layers, setLayers] = useState([
-    { height: 0.5, width: 3, color: "skyblue", index: 0 },
-    { height: 1, width: 4, color: "skyblue", index: 1 },
-    { height: 2, width: 5, color: "skyblue", index: 2 },
+    { height: 0.5, width: 3, color: "#87ceeb", id: "abc" },
+    { height: 1, width: 4, color: "#87ceeb", id: "def" },
+    { height: 2, width: 5, color: "#87ceeb", id: "ghi" },
   ]);
 
   const addLayer = (newLayer: Layer) => {
     setLayers((prev) => [...prev, newLayer]);
   };
-  console.log(layers.length);
+
+  const removeLayer = (layer: Layer) => {
+    const arr = layers.slice();
+    const index = arr.indexOf(layer);
+    arr.splice(index, 1);
+    setLayers(arr);
+  };
+
+  console.log(layers);
   return (
     <div className="App">
-      <CakeBuilder addLayer={addLayer} />
+      <CakeBuilder
+        layers={layers}
+        addLayer={addLayer}
+        removeLayer={removeLayer}
+      />
       <Cake layers={layers} />
     </div>
   );

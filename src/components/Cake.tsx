@@ -9,7 +9,7 @@ export default function Cake({ layers }: CakeProps) {
   return (
     <div>
       {layers.map((layer) => (
-        <CakeLayer layer={layer} key={layer.index} />
+        <CakeLayer layer={layer} key={layer.id} />
       ))}
     </div>
   );

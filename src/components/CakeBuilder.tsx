@@ -5,10 +5,12 @@ import LayerForm from "./LayerForm";
 import { Layer } from "../App";
 
 interface Props {
+  layers: Layer[];
   addLayer: (layer: Layer) => void;
+  removeLayer: (layer: Layer) => void;
 }
 
-export default function CakeBuilder({ addLayer }: Props) {
+export default function CakeBuilder({ layers, addLayer, removeLayer }: Props) {
   const [formDisplay, setFormDisplay] = useState(true);
   console.log("Form display state: ", formDisplay);
 
@@ -24,7 +26,7 @@ export default function CakeBuilder({ addLayer }: Props) {
   return (
     <div>
       <LayerAdd displayForm={displayForm} />
-      <LayerBuilder />
+      <LayerBuilder layers={layers} removeLayer={removeLayer} />
       {formDisplay && <LayerForm hideForm={hideForm} addLayer={addLayer} />}
     </div>
   );
