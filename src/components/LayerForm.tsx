@@ -8,12 +8,11 @@ interface LayerFormProps {
 }
 
 export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
-  const [layerId, setLayerId] = useState(3);
   const [newLayer, setNewLayer] = useState<Layer>({
     height: 0,
     width: 0,
     color: "#ffffff",
-    id: uuidv4(),
+    id: "",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +28,7 @@ export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    addLayer(newLayer);
+    addLayer({ ...newLayer, id: uuidv4() });
   };
 
   return (
