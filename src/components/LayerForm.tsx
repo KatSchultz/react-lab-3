@@ -13,6 +13,7 @@ export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
     width: 0,
     color: "#ffffff",
     id: "",
+    selected: false,
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

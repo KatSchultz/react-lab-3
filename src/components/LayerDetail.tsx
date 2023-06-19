@@ -4,11 +4,22 @@ import { Layer } from "../App";
 interface LayerDetailProps {
   layer: Layer;
   removeLayer: (layer: Layer) => void;
+  selectLayer: (layer: Layer) => void;
 }
 
-export default function LayerDetail({ layer, removeLayer }: LayerDetailProps) {
+export default function LayerDetail({
+  layer,
+  removeLayer,
+  selectLayer,
+}: LayerDetailProps) {
+  const styles = { backgroundColor: "lightyellow" };
+
   return (
-    <div key={layer.id} className="p-2 border-b-2 border-slate-500">
+    <div
+      className="p-2 border-b-2 border-slate-500"
+      style={layer.selected ? styles : {}}
+      onClick={() => selectLayer(layer)}
+    >
       <div className="flex">
         <div className="builder-width">
           <label htmlFor="">Width</label>

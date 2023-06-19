@@ -8,9 +8,15 @@ interface Props {
   layers: Layer[];
   addLayer: (layer: Layer) => void;
   removeLayer: (layer: Layer) => void;
+  selectLayer: (layer: Layer) => void;
 }
 
-export default function CakeBuilder({ layers, addLayer, removeLayer }: Props) {
+export default function CakeBuilder({
+  layers,
+  addLayer,
+  removeLayer,
+  selectLayer,
+}: Props) {
   const [formDisplay, setFormDisplay] = useState(true);
   console.log("Form display state: ", formDisplay);
 
@@ -26,7 +32,11 @@ export default function CakeBuilder({ layers, addLayer, removeLayer }: Props) {
   return (
     <div className="bg-slate-100">
       <LayerAdd displayForm={displayForm} />
-      <LayerBuilder layers={layers} removeLayer={removeLayer} />
+      <LayerBuilder
+        layers={layers}
+        removeLayer={removeLayer}
+        selectLayer={selectLayer}
+      />
       {formDisplay && <LayerForm hideForm={hideForm} addLayer={addLayer} />}
     </div>
   );
