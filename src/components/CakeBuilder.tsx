@@ -24,7 +24,7 @@ export default function CakeBuilder({ layers, addLayer, removeLayer }: Props) {
   }
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <LayerAdd displayForm={displayForm} />
       <LayerBuilder layers={layers} removeLayer={removeLayer} />
       {formDisplay && <LayerForm hideForm={hideForm} addLayer={addLayer} />}

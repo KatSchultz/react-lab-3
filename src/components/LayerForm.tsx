@@ -32,40 +32,46 @@ export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
   };
 
   return (
-    <div>
+    <div className="p-2">
       <form action="" onSubmit={submitHandler}>
-        <h2>Add a Layer</h2>
-        <label htmlFor="">Color</label>
-        <input
-          type="color"
-          name="color"
-          value={newLayer.color}
-          onChange={handleChange}
-        />
-        <label htmlFor="">Height</label>
-        <input
-          type="range"
-          name="height"
-          step={0.5}
-          min=".5"
-          max="10"
-          value={newLayer.height}
-          onChange={handleChange}
-        />
-        <label htmlFor="">Width</label>
-        <input
-          type="range"
-          name="width"
-          step={0.5}
-          min="1"
-          max="10"
-          value={newLayer.width}
-          onChange={handleChange}
-        />
-        <button type="submit" className="save">
+        <h2 className="text-center font-bold">Add a Layer</h2>
+        <div className="flex">
+          <label htmlFor="">Height</label>
+          <input
+            type="range"
+            name="height"
+            step={0.5}
+            min=".5"
+            max="10"
+            value={newLayer.height}
+            onChange={handleChange}
+          />
+          <label htmlFor="" className="pl-2">
+            Width
+          </label>
+          <input
+            type="range"
+            name="width"
+            step={0.5}
+            min="1"
+            max="10"
+            value={newLayer.width}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex">
+          <label htmlFor="">Color</label>
+          <input
+            type="color"
+            name="color"
+            value={newLayer.color}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="save text-blue-800 font-bold">
           Save
         </button>
-        <button className="cancel" onClick={hideForm}>
+        <button className="cancel text-red-600 font-bold" onClick={hideForm}>
           Cancel
         </button>
       </form>
