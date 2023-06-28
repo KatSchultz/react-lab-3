@@ -14,6 +14,11 @@ export default function LayerDetail({
 }: LayerDetailProps) {
   const styles = { backgroundColor: "lightyellow" };
 
+  const handleDeleteButton = (e: any) => {
+    e.stopPropagation();
+    removeLayer(layer);
+  };
+
   return (
     <div
       className="p-2 border-b-2 border-slate-500"
@@ -52,7 +57,7 @@ export default function LayerDetail({
           <input type="color" name="color" value={layer.color} readOnly />
         </div>
         <button
-          onClick={() => removeLayer(layer)}
+          onClick={handleDeleteButton}
           className="border-2 border-red-600 rounded text-red-600 bg-white p-1"
         >
           Delete

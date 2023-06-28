@@ -9,8 +9,8 @@ interface LayerFormProps {
 
 export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
   const [newLayer, setNewLayer] = useState<Layer>({
-    height: 0,
-    width: 0,
+    height: 2,
+    width: 5,
     color: "#ffffff",
     id: "",
     selected: false,
@@ -37,16 +37,6 @@ export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
       <form action="" onSubmit={submitHandler}>
         <h2 className="text-center font-bold">Add a Layer</h2>
         <div className="flex">
-          <label htmlFor="">Height</label>
-          <input
-            type="range"
-            name="height"
-            step={0.5}
-            min=".5"
-            max="10"
-            value={newLayer.height}
-            onChange={handleChange}
-          />
           <label htmlFor="" className="pl-2">
             Width
           </label>
@@ -57,6 +47,16 @@ export default function LayerForm({ hideForm, addLayer }: LayerFormProps) {
             min="1"
             max="10"
             value={newLayer.width}
+            onChange={handleChange}
+          />
+          <label htmlFor="">Height</label>
+          <input
+            type="range"
+            name="height"
+            step={0.5}
+            min=".5"
+            max="10"
+            value={newLayer.height}
             onChange={handleChange}
           />
         </div>
